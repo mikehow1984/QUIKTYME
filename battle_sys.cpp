@@ -17,9 +17,6 @@ bool level_up (int lv, int ex) //"ex" is the player's experience after a battle
      *certain level.
      **/
     int nextlevel_ex = ((50*(lv))*((9*(lv)-16)))-100;
-    if (ex >= nextlevel_ex)
-    {
-        return true;
-    }
-    return false;
+
+    return ex >= nextlevel_ex;
 }
