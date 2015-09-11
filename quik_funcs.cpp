@@ -7,6 +7,7 @@
 
 using std::cin;
 using std::cout;
+using std::endl;
 
 
 Fighter::Fighter()
@@ -16,13 +17,26 @@ Fighter::Fighter()
     Level = 1;
     exp = 0;
     srand(time(0));
-    HP = stat_rand(HP)+10;
-    Atk = stat_rand(Atk);
-    Def = stat_rand(Def);
-    Int = stat_rand(Int);
-    Spd = stat_rand(Spd);
-    exp_gain = 0;
+    HP = (stat_rand(HP,1,10))*10;
+    Atk = stat_rand(Atk,1,10);
+    Def = stat_rand(Def,1,10);
+    Int = stat_rand(Int,1,10);
+    Spd = stat_rand(Spd,1,10);
+    double exp_gain = 0;
 }
+
+Fighter::~Fighter() {}
+
+Enemy::Enemy()
+{
+    HP = (stat_rand(HP,1,10))*10;
+    Atk = stat_rand(Atk,1,10);
+    Def = stat_rand(Def,1,10);
+    Int = stat_rand(Int,1,10);
+    Spd = stat_rand(Spd,1,10);
+}
+
+Enemy::~Enemy(){}
 
 int input_errorchk (int n)
 {
@@ -53,10 +67,10 @@ int move_power(int a, int d, int i, int h)
         crit = 2;
         cout << "CRITICAL HIT!\n";
     }
-    int power = ((a+h)-d+(rand()%4-2))*crit; //critical hit formula
-    if (power < 0)
+    int power = ((a+h)-d+(rand()%4-2))*crit; //hit formula
+    if (power <= 0)
     {
-        power = 0;
+        power = 1;
     }
     return power;
 }
