@@ -21,7 +21,6 @@ Fighter::Fighter()
     Def = stat_rand(Def);
     Int = stat_rand(Int);
     Spd = stat_rand(Spd);
-    exp = 0;
     exp_gain = 0;
 }
 
