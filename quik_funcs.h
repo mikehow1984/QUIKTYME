@@ -5,19 +5,27 @@
 #include <string>
 #include <stdlib.h>
 
-class fighter //work in progress. Player stats
+
+class Fighter //work in progress. Player stats
 {
 public:
+    Fighter();
     std::string name;
-    int Level;
     int HP;
     int Atk;
     int Def;
     int Int;
     int Spd;
+    double exp_gain;
+private:
+    int Level;
     double exp;
 };
 
+class Enemy: public Fighter
+{
+
+};
 template <typename T> //randomize function for stats
 T stat_rand(T &stat)
 {
