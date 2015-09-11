@@ -66,13 +66,8 @@ int main()
             << "\nThe intelligence is " << p.Int
             << ".\nThe speed is " << p.Spd << ".\n";
 
-    fighter m;              //intitalizing monster info. this will be its own function soon
+    Enemy m;              //intitalizing monster info. this will be its own function soon
     m.name = "DUCKY";       //gf's cat's name
-    m.HP = stat_rand(m.HP)+10;
-    m.Atk = stat_rand(m.Atk);
-    m.Def = stat_rand(m.Def);
-    m.Int = stat_rand(m.Int);
-    m.Spd = stat_rand(m.Spd);
 
     cout << "The monster " << m.name << " randomly appeared!\n";
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
@@ -169,7 +164,7 @@ int main()
                 m.HP = m.HP - hit;
                 cout << "You did " << hit << " damage!\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-                cout << p.name << "'s HP: " << p.HP << "\n"  << m.name.c_str() << "'s HP: " << m.HP << "\n";
+                cout << p.name << "'s HP: " << p.HP << "\n"  << m.name << "'s HP: " << m.HP << "\n";
 
                 if(check_if_dead(m.HP))
                     {
