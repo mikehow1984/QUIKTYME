@@ -42,11 +42,10 @@ template <class ... Args> //stat randomizer using variadic template
 
 int main()
 {
-    cout << "Enter your name: " << '\n';
+
     //name algorithm here
-    fighter p; //initializing player's info
-    p.Level = 1;
-    p.exp = 0;
+    Fighter p; //initializing player's info
+
 
      /*
 
@@ -60,15 +59,6 @@ int main()
     //maybe make the fighting depend on what key you type
 
     */
-
-    cin >> p.name;
-    srand(time(0));
-
-    p.HP = stat_rand(p.HP)+10;
-    p.Atk = stat_rand(p.Atk);
-    p.Def = stat_rand(p.Def);
-    p.Int = stat_rand(p.Int);
-    p.Spd = stat_rand(p.Spd);
 
 
     cout << "The HP is " << p.HP << ".\nThe attack is "
