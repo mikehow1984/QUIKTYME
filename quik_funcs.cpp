@@ -8,6 +8,7 @@
 using std::cin;
 using std::cout;
 using std::endl;
+using std::string;
 
 
 Fighter::Fighter()
@@ -38,7 +39,7 @@ Enemy::Enemy()
 
 Enemy::~Enemy(){}
 
-int input_errorchk (int n)
+int input_errorchk (int &n)
 {
         cin >> n;
         while(cin.fail() || (n != 0 && n != 1 && n != 2))
@@ -51,12 +52,12 @@ int input_errorchk (int n)
     return n;
 }
 
-bool check_if_dead (int H)
+bool check_if_dead (int &H)
 {
     return H <=0;
 }
 
-int move_power(int a, int d, int i, int h)
+int move_power(int &a, int &d, int &i, int h)
 {
     int crit = 1;
     int crit_roll = rand()%1000+1;
@@ -72,5 +73,59 @@ int move_power(int a, int d, int i, int h)
     {
         power = 1;
     }
+    return power;
+}
+
+int move_power(int &a, int &d, int &i, int h, const double multiplier, string s)
+{
+    if (s == "Atk")
+    {
+        a = a*multiplier;
+    }
+    else if (s == "Def")
+    {
+        d = d*multiplier;
+    }
+    else if (s == "Int")
+    {
+        i = i*multiplier;
+    }
+    else
+    {
+        cout << "Multiplier error" << endl;
+    }
+    int power = move_power(a, d, i, h);
+
+    return power;
+}
+int move_power(int &a, int &d, int &i, int h, const double multiplier1, string s1, const double multiplier2, string s2)
+{
+    if (s1 == "Atk")
+    {
+        a = a*multiplier1;
+    }
+    else if(s2 == "Atk")
+    {
+        a = a*multiplier2;
+    }
+    if (s1 == "Def")
+    {
+        d = d*multiplier1;
+    }
+    else if (s2 == "Def")
+    {
+        d = d*multiplier2;
+    }
+    if (s1 == "Int")
+    {
+        i = i*multiplier1;
+    }
+    else if (s2 == "Int")
+    {
+        i = i*multiplier2;
+    }
+
+    int power = move_power(a, d, i, h);
+
     return power;
 }
