@@ -95,14 +95,14 @@ int main()
             //great if the monster is stronger than you
                 if(check_if_dead(m.HP))
                     {
-                        cout << "You have defeated " << m.name.c_str() << "!\n";
+                        cout << "You have defeated " << m.name << "!\n";
                         break;
                     }
                     //always check if a fighter or monster is dead after an attack
             }
             else        //here's the risk of dodging: if it hits, not only do you lose a turn
             {           //but the monster does bonus damage to you!
-                hit = move_power(m.Atk, p.Def/2, m.Int, 5);
+                hit = move_power(m.Atk, p.Def, m.Int, 5, .5, "Def");
                 p.HP = p.HP - hit;
                 cout << m.name << " is too fast!\n";
                 cout << m.name << " did " << hit << " damage to you!\n";
@@ -176,7 +176,7 @@ int main()
         }
         if (move_num == 0)      //block the attack. the monster is guaranteed to hit you
         {                       //but does a decreased amount of damage
-            hit = move_power(m.Atk, p.Def*2, m.Int, 5);
+            hit = move_power(m.Atk, p.Def, m.Int, 5, 2, "Def");
             p.HP = p.HP - hit;
             cout << m.name << " did " << hit << " damage to you!\n";
             cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
