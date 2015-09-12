@@ -55,8 +55,11 @@ T stat_rand(T &stat, int init_val, int range) //init_val = beginning range
     return stat;
 }
 
-int input_errorchk (int);
-bool check_if_dead (int);
-int move_power(int, int, int, int);
+int input_errorchk (int&);
+bool check_if_dead (int&);
+int move_power(int&, int&, int&, int);
+int move_power(int&, int&, int&, int, const double, std::string); //for one stat multiplier
+int move_power(int&, int&, int&, int, const double, std::string, const double, std::string);
+//for 2 stat multipliers
 
 #endif // QUIK_FUNCS_H_INCLUDED
