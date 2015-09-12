@@ -28,8 +28,10 @@
 #include <cctype>
 #include "quik_funcs.h"
 
-using namespace std;
-
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
 
 /*
 playing with variadic  template here
@@ -46,21 +48,16 @@ int main()
     //name algorithm here
     Fighter p; //initializing player's info
 
+    /*
+        cout << "Enter your birthday: " << '\n';
+        //age algorithm here
+        cout << "What's your favorite video game: "
+        //string algorithm here
 
-     /*
-
-    cout << "Enter your birthday: " << '\n';
-    //age algorithm here
-    cout << "What's your favorite video game: "
-    //string algorithm here
-
-    //then, write a function that translates these into the hero's stats
-    //create random heroes to fight
-    //maybe make the fighting depend on what key you type
-
+        //then, write a function that translates these into the hero's stats
+        //create random heroes to fight
+        //maybe make the fighting depend on what key you type
     */
-
-
     cout << "The HP is " << p.HP << ".\nThe attack is "
             << p.Atk << ".\nThe defense is " << p.Def
             << "\nThe intelligence is " << p.Int
