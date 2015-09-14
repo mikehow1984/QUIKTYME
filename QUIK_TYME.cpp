@@ -188,5 +188,12 @@ int main()
         }                       //doesn't make sense strategically, but adding status effects or
                                 //other battle tactics will make it feasible
     } while(p.HP > 0 && m.HP > 0); //redundancy; there are already breaks when either player dies
+
+    if (player_win(m.HP))
+    {
+        p.exp = p.exp + m.exp_given();
+        cout << p.name << " gained " << m.exp_given() << " experience!" << endl;
+    }
+
 }
 
