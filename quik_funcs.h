@@ -30,9 +30,9 @@ public:
     int Spd;
     double exp_gain;
     std::string name;
+    double exp;
 private:
     int Level;
-    double exp;
 };
 
 class Enemy
@@ -46,6 +46,10 @@ public:
     int Def;
     int Int;
     int Spd;
+    double exp_given(void)
+    {
+        return Atk+Def+Int+Spd;
+    }
 
 };
 template <typename T> //randomize function for stats
@@ -57,6 +61,7 @@ T stat_rand(T &stat, int init_val, int range) //init_val = beginning range
 
 int input_errorchk (int&);
 bool check_if_dead (int&);
+bool player_win(int&);
 int move_power(int&, int&, int&, int);
 int move_power(int&, int&, int&, int, const double, std::string); //for one stat multiplier
 int move_power(int&, int&, int&, int, const double, std::string, const double, std::string);
