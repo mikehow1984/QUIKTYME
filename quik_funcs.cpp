@@ -13,8 +13,9 @@ using std::string;
 
 Fighter::Fighter()
 {
-    cout << "Enter your name: " << endl;
+    cout << "Enter your name: ";
     cin >> name;
+    cout << endl;
     Level = 1;
     exp = 0;
     srand(time(0));
@@ -57,6 +58,10 @@ bool check_if_dead (int &H)
     return H <=0;
 }
 
+bool player_win(int &enemy_HP)
+{
+    return enemy_HP <= 0;
+}
 int move_power(int &a, int &d, int &i, int h)
 {
     int crit = 1;
