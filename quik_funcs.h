@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <string>
 
 
 class Fighter
@@ -28,11 +29,12 @@ public:
     int Def;
     int Int;
     int Spd;
-    double exp_gain;
     std::string name;
     double exp;
+    void exp_gain(int, int, bool, std::string);
 private:
     int Level;
+
 };
 
 class Enemy
