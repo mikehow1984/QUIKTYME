@@ -40,6 +40,15 @@ Enemy::Enemy()
 
 Enemy::~Enemy(){}
 
+void Fighter::exp_gain(int p_exp, int exp_given, bool win, string p_name) //exp system. still need to add leveling
+{
+        if (win)
+    {
+        p_exp = p_exp + exp_given;
+        cout << p_name << " gained " << exp_given << " experience!" << endl;
+    }
+}
+
 int input_errorchk (int &n)
 {
         cin >> n;
