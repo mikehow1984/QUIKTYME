@@ -4,8 +4,6 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
-#include <string>
-
 
 class Fighter
 /*work in progress. Player stats. Thinking of making a system similar to
@@ -32,9 +30,9 @@ public:
     std::string name;
     double exp;
     void exp_gain(int, int, bool, std::string);
+    //need leveling function
 private:
     int Level;
-
 };
 
 class Enemy
