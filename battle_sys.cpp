@@ -3,7 +3,11 @@
  *They may have separate files in the future, as they become more complex
  **/
 
+#include <iostream>
 #include <math.h>
+#include <string>
+
+using std::string;          using std::cout;
 
 bool level_up (int lv, int ex) //"ex" is the player's experience after a battle
 {
@@ -19,4 +23,10 @@ bool level_up (int lv, int ex) //"ex" is the player's experience after a battle
     int nextlevel_ex = ((50*(lv))*((9*(lv)-16)))-100;
 
     return ex >= nextlevel_ex;
+}
+
+void enemy_announce (string enemy_name)
+{
+    cout << "The monster " << enemy_name << " randomly appeared!\n";
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 }

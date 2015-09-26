@@ -21,7 +21,7 @@ class Fighter
 public:
     Fighter();
     ~Fighter();
-
+    std::array<int,5> base_stats;
     int HP;
     int Atk;
     int Def;

@@ -27,6 +27,7 @@
 #include <cstdio>
 #include <cctype>
 #include "quik_funcs.h"
+#include "battle_sys.h"
 
 using std::cin;
 using std::cout;
@@ -66,8 +67,7 @@ int main()
     Enemy m;              //intitalizing monster info. this will be its own function soon
     m.name = "DUCKY";       //gf's cat's name
 
-    cout << "The monster " << m.name << " randomly appeared!\n";
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    enemy_announce(m.name);
 
     do{     //battle system. needs to be split into functions
         cout << "Type 2 to dodge, Type 1 to kick her in the face, Type 0 to block: ";

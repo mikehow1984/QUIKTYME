@@ -9,7 +9,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
-
+using std::cerr;
+using std:array;
 
 Fighter::Fighter()
 {
@@ -19,6 +20,7 @@ Fighter::Fighter()
     Level = 1;
     exp = 0;
     srand(time(0));
+    base_stats = {100, 80, 60, 70, 70};
     HP = (stat_rand(HP,1,10))*10;
     Atk = stat_rand(Atk,1,10);
     Def = stat_rand(Def,1,10);
@@ -53,7 +55,7 @@ int input_errorchk (int &n)
         cin >> n;
         while(cin.fail() || (n != 0 && n != 1 && n != 2))
         {
-            cout << "Invalid move! Re-enter: ";
+            cerr << "Invalid move! Re-enter: ";
             cin.clear();
             cin.ignore(256,'\n');
             cin >> n;
