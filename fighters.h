@@ -20,11 +20,6 @@ class Fighter
 public:
     Fighter();
     ~Fighter();
-    std::vector<int> base_stats;
-    std::vector<int> genetics;
-    std::vector<int> stat_boost;
-    std::vector<int> stats;
-
     int HP;
     int Atk;
     int Def;
@@ -35,6 +30,10 @@ public:
     void exp_gain(int, int, bool, std::string);
     //need leveling function
 private:
+    std::vector<int> base_stats;
+    std::vector<int> genetics;
+    std::vector<int> stat_boost;
+    std::vector<int> stats;
     int Level;
 };
 
