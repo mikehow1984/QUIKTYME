@@ -28,6 +28,7 @@
 #include <cctype>
 #include "quik_funcs.h"
 #include "battle_sys.h"
+#include "fighters.h"
 
 using std::cin;
 using std::cout;

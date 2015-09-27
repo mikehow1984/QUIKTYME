@@ -4,51 +4,16 @@
 #include <cstdio>
 #include <ctime>
 #include "quik_funcs.h"
+#include "fighters.h"
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
 using std::cerr;
-using std:array;
+using std::array;
 
-Fighter::Fighter()
-{
-    cout << "Enter your name: ";
-    cin >> name;
-    cout << endl;
-    Level = 1;
-    exp = 0;
-    srand(time(0));
-    base_stats = {100, 80, 60, 70, 70};
-    HP = (stat_rand(HP,1,10))*10;
-    Atk = stat_rand(Atk,1,10);
-    Def = stat_rand(Def,1,10);
-    Int = stat_rand(Int,1,10);
-    Spd = stat_rand(Spd,1,10);
-}
 
-Fighter::~Fighter() {}
-
-Enemy::Enemy()
-{
-    HP = (stat_rand(HP,1,10))*10;
-    Atk = stat_rand(Atk,1,10);
-    Def = stat_rand(Def,1,10);
-    Int = stat_rand(Int,1,10);
-    Spd = stat_rand(Spd,1,10);
-}
-
-Enemy::~Enemy(){}
-
-void Fighter::exp_gain(int p_exp, int exp_given, bool win, string p_name) //exp system. still need to add leveling
-{
-        if (win)
-    {
-        p_exp = p_exp + exp_given;
-        cout << p_name << " gained " << exp_given << " experience!" << endl;
-    }
-}
 
 int input_errorchk (int &n)
 {
@@ -143,4 +108,13 @@ int move_power(int &a, int &d, int &i, int h, const double multiplier1, string s
     int power = move_power(a, d, i, h);
 
     return power;
+}
+
+int stat_formula_HP(int& baseHP, int& geneticHP, int& boostHP, int& level)
+{
+    return (((((2*baseHP)+geneticHP+(boostHP/4)*level)/100))+level+10);
+}
+int stat_formula (int& base, int& genetic, int& stat_boost, int& level)
+{
+    return (((((2*base)+genetic+(stat_boost/4)*level)/100))+5);
 }
