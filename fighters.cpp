@@ -29,11 +29,11 @@ Fighter::Fighter()
     base_stats.push_back(70);
     base_stats.push_back(70);
     //base_stat[0] = HP, 1 = Atk, 2 = Def, 3 = Int, 4 = Spd;
-    genetics.push_back((stat_rand(HP,1,30)));
+    genetics.push_back((stat_rand(1,30)));
 
     for (int i = 1; i < 5; i++)
     {
-        genetics.push_back(stat_rand(HP,1,30));
+        genetics.push_back(stat_rand(1,30));
     }
 
     for (int i = 0; i < 5; i++)
@@ -49,22 +49,22 @@ Fighter::Fighter()
         ;
     }
 
-    HP = stats[0];
-    Atk = stats[1];
-    Def = stats[2];
-    Int = stats[3];
-    Spd = stats[4];
+    HP = &stats[0];
+    Atk = &stats[1];
+    Def = &stats[2];
+    Int = &stats[3];
+    Spd = &stats[4];
 }
 
 Fighter::~Fighter() {}
 
 Enemy::Enemy()
 {
-    HP = stat_rand(HP,7,16);
-    Atk = stat_rand(Atk,1,10);
-    Def = stat_rand(Def,1,10);
-    Int = stat_rand(Int,1,10);
-    Spd = stat_rand(Spd,1,10);
+    HP = stat_rand(7,16);
+    Atk = stat_rand(1,10);
+    Def = stat_rand(1,10);
+    Int = stat_rand(1,10);
+    Spd = stat_rand(1,10);
 }
 
 Enemy::~Enemy(){}

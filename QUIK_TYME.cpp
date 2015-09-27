@@ -60,7 +60,9 @@ int main()
         //create random heroes to fight
         //maybe make the fighting depend on what key you type
     */
-    cout << "The HP is " << p.HP << ".\nThe attack is "
+    cout << "What level are you? ";
+    cin >> p.Level;
+    cout << endl << "The HP is " << p.HP << ".\nThe attack is "
             << p.Atk << ".\nThe defense is " << p.Def
             << "\nThe intelligence is " << p.Int
             << ".\nThe speed is " << p.Spd << ".\n";
@@ -79,7 +81,7 @@ int main()
         int hit;
         if (move_num == 2)      //dodging an attack
         {
-            int m_hit_chance = (m.Spd*100)/(p.Spd+m.Spd);   //calculates the chances of monster's attack hitting
+            int m_hit_chance = ((*m.Spd)*(100))/((*p.Spd)+(*m.Spd));   //calculates the chances of monster's attack hitting
             if (rand()%100+1 > m_hit_chance)                //if a random number is greater than attack chance
             {                                               //you dodge
                 cout << "You dodged the attack!\n";
@@ -91,7 +93,7 @@ int main()
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
             //the advantage is that the monster wastes a turn while taking damage
             //great if the monster is stronger than you
-                if(check_if_dead(m.HP))
+                if(check_if_dead(*m.HP))
                     {
                         cout << "You have defeated " << m.name << "!\n";
                         break;

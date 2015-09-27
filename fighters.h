@@ -20,21 +20,23 @@ class Fighter
 public:
     Fighter();
     ~Fighter();
-    int HP;
-    int Atk;
-    int Def;
-    int Int;
-    int Spd;
+    int* HP;
+    int* Atk;
+    int* Def;
+    int* Int;
+    int* Spd;
     std::string name;
     double exp;
     void exp_gain(int, int, bool, std::string);
     //need leveling function
+    int Level;
+
 private:
     std::vector<int> base_stats;
     std::vector<int> genetics;
     std::vector<int> stat_boost;
     std::vector<int> stats;
-    int Level;
+
 };
 
 class Enemy

@@ -13,8 +13,6 @@ using std::string;
 using std::cerr;
 using std::array;
 
-
-
 int input_errorchk (int &n)
 {
         cin >> n;
@@ -28,27 +26,28 @@ int input_errorchk (int &n)
     return n;
 }
 
-bool check_if_dead (int &H)
+bool check_if_dead (int* H)
 {
     return H <=0;
 }
 
-bool player_win(int &enemy_HP)
+bool player_win(int* enemy_HP)
 {
     return enemy_HP <= 0;
 }
-int move_power(int &a, int &d, int &i, int h)
+
+int move_power(int* a, int* d, int* i, int h)
 {
     int crit = 1;
     int crit_roll = rand()%1000+1;
-    int crit_chance = (i*200)/10;
+    int crit_chance = ((*i)*(200))/10;
 
     if (crit_chance > crit_roll)
     {
         crit = 2;
         cout << "CRITICAL HIT!\n";
     }
-    int power = ((a+h)-d+(rand()%4-2))*crit; //hit formula
+    int power = (((*a)+h-(*d)+(rand()%4-2))*crit); //hit formula
     if (power <= 0)
     {
         power = 1;
@@ -56,53 +55,53 @@ int move_power(int &a, int &d, int &i, int h)
     return power;
 }
 
-int move_power(int &a, int &d, int &i, int h, const double multiplier, string s)
+int move_power(int* a, int* d, int* i, int h, const double multiplier, string s) //h is the move's base power
 {
     if (s == "Atk")
     {
-        a = a*multiplier;
+        *a= (*a)*multiplier;
     }
     else if (s == "Def")
     {
-        d = d*multiplier;
+        *d = (*d)*multiplier;
     }
     else if (s == "Int")
     {
-        i = i*multiplier;
+        *i= (*i)*multiplier;
     }
     else
     {
-        cout << "Multiplier error" << endl;
+        cerr << "Multiplier error" << endl;
     }
     int power = move_power(a, d, i, h);
 
     return power;
 }
-int move_power(int &a, int &d, int &i, int h, const double multiplier1, string s1, const double multiplier2, string s2)
+int move_power(int* a, int* d, int* i, int h, const double multiplier1, string s1, const double multiplier2, string s2)
 {
     if (s1 == "Atk")
     {
-        a = a*multiplier1;
+        *a = (*a)*multiplier1;
     }
     else if(s2 == "Atk")
     {
-        a = a*multiplier2;
+        *a = (*a)*multiplier2;
     }
     if (s1 == "Def")
     {
-        d = d*multiplier1;
+        *d = (*d)*multiplier1;
     }
     else if (s2 == "Def")
     {
-        d = d*multiplier2;
+        *d = (*d)*multiplier2;
     }
     if (s1 == "Int")
     {
-        i = i*multiplier1;
+        *i = (*i)*multiplier1;
     }
     else if (s2 == "Int")
     {
-        i = i*multiplier2;
+        *i = (*i)*multiplier2;
     }
 
     int power = move_power(a, d, i, h);
