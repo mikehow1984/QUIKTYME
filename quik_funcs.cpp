@@ -13,9 +13,15 @@ using std::string;
 using std::cerr;
 using std::array;
 
-int input_errorchk (int &n)
+int stat_rand(int init_val, int range) //init_val = beginning range
+{                                             //range = max range
+    srand(time(0));
+    int stat = rand()%range+init_val;
+    return stat;
+}
+
+int input_errorchk (int n)
 {
-        cin >> n;
         while(cin.fail() || (n != 0 && n != 1 && n != 2))
         {
             cerr << "Invalid move! Re-enter: ";
@@ -28,12 +34,12 @@ int input_errorchk (int &n)
 
 bool check_if_dead (int* H)
 {
-    return H <=0;
+    return *H <=0;
 }
 
 bool player_win(int* enemy_HP)
 {
-    return enemy_HP <= 0;
+    return *enemy_HP <= 0;
 }
 
 int move_power(int* a, int* d, int* i, int h)
@@ -115,5 +121,5 @@ int stat_formula_HP(int& baseHP, int& geneticHP, int& boostHP, int& level)
 }
 int stat_formula (int& base, int& genetic, int& stat_boost, int& level)
 {
-    return (((((2*base)+genetic+(stat_boost/4)*level)/100))+5);
+    return ((((((2*base)+genetic+(stat_boost/4))*level)/100))+5);
 }

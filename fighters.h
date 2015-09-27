@@ -25,13 +25,15 @@ public:
     int* Def;
     int* Int;
     int* Spd;
-    std::string name;
     double exp;
     void exp_gain(int, int, bool, std::string);
     //need leveling function
     int Level;
-
-private:
+    void refresh_stats();
+    void change_name();
+    std::string get_name();
+protected:
+    std::string name;
     std::vector<int> base_stats;
     std::vector<int> genetics;
     std::vector<int> stat_boost;
@@ -39,20 +41,21 @@ private:
 
 };
 
-class Enemy
+class Enemy: protected Fighter
 {
 public:
     Enemy();
     ~Enemy();
-    std::string name;
-    int HP;
-    int Atk;
-    int Def;
-    int Int;
-    int Spd;
-    double exp_given(void)
+    int* HP;
+    int* Atk;
+    int* Def;
+    int* Int;
+    int* Spd;
+    void set_name(std::string);
+    std::string get_name();
+    int exp_given()
     {
-        return Atk+Def+Int+Spd;
+        return *Atk+*Def+*Int+*Spd;
     }
 
 };

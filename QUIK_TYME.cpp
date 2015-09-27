@@ -60,22 +60,26 @@ int main()
         //create random heroes to fight
         //maybe make the fighting depend on what key you type
     */
+    cout << "Enter your name: ";
+    p.change_name();
+
     cout << "What level are you? ";
     cin >> p.Level;
-    cout << endl << "The HP is " << p.HP << ".\nThe attack is "
-            << p.Atk << ".\nThe defense is " << p.Def
-            << "\nThe intelligence is " << p.Int
-            << ".\nThe speed is " << p.Spd << ".\n";
+    p.refresh_stats();
+    cout << endl << "The HP is " << *p.HP << endl << "The attack is "
+            << *p.Atk << endl << "The defense is " << *p.Def << endl
+            << "The intelligence is " << *p.Int << endl
+            << "The speed is " << *p.Spd << endl;
 
     Enemy m;              //intitalizing monster info. this will be its own function soon
-    m.name = "DUCKY";       //gf's cat's name
 
-    enemy_announce(m.name);
+    enemy_announce(m.get_name());
 
     do{     //battle system. needs to be split into functions
         cout << "Type 2 to dodge, Type 1 to kick her in the face, Type 0 to block: ";
             //simple for now. need to add movesets and more options
         int move_num;
+        cin >> move_num;
         move_num = input_errorchk(move_num);
 
         int hit;
@@ -86,16 +90,16 @@ int main()
             {                                               //you dodge
                 cout << "You dodged the attack!\n";
                 hit = rand()%10+1;
-                m.HP = m.HP - hit;
-                cout << m.name << " hit a wall and lost " << hit << " HP!\n";
+                *m.HP = *m.HP - hit;
+                cout << m.get_name() << " hit a wall and lost " << hit << " HP!\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-                cout << p.name << "'s HP: " << p.HP << "\n" << m.name << "'s HP: " << m.HP << "\n";
+                cout << p.get_name() << "'s HP: " << *p.HP << "\n" << m.get_name() << "'s HP: " << *m.HP << "\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
             //the advantage is that the monster wastes a turn while taking damage
             //great if the monster is stronger than you
-                if(check_if_dead(*m.HP))
+                if(check_if_dead(m.HP))
                     {
-                        cout << "You have defeated " << m.name << "!\n";
+                        cout << "You have defeated " << m.get_name() << "!\n";
                         break;
                     }
                     //always check if a fighter or monster is dead after an attack
@@ -103,72 +107,72 @@ int main()
             else        //here's the risk of dodging: if it hits, not only do you lose a turn
             {           //but the monster does bonus damage to you!
                 hit = move_power(m.Atk, p.Def, m.Int, 5, .5, "Def");
-                p.HP = p.HP - hit;
-                cout << m.name << " is too fast!\n";
-                cout << m.name << " did " << hit << " damage to you!\n";
+                *p.HP = *p.HP - hit;
+                cout << m.get_name() << " is too fast!\n";
+                cout << m.get_name() << " did " << hit << " damage to you!\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-                cout << p.name << "'s HP: " << p.HP << "\n"  << m.name << "'s HP: " << m.HP << "\n";
+                cout << p.get_name() << "'s HP: " << *p.HP << "\n"  << m.get_name() << "'s HP: " << *m.HP << "\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
                 if(check_if_dead(p.HP))
                     {
-                        cout << p.name << " NOOOOOOOO!\n" <<  m.name << " has defeated you!\n";
+                        cout << p.get_name() << " NOOOOOOOO!\n" <<  m.get_name() << " has defeated you!\n";
                         break;
                     }
             }
         }
         if (move_num == 1) //normal attack option. will add move options (moveset)
         {
-            if (p.Spd > m.Spd)  //checks who is faster. monster has the advantage if they're equal
+            if (*p.Spd > *m.Spd)  //checks who is faster. monster has the advantage if they're equal
             {
                 hit = move_power(p.Atk, m.Def, p.Int, 5);
-                m.HP = m.HP - hit;
+                *m.HP = *m.HP - hit;
                 cout << "You did " << hit << " damage!\n";
-                cout << p.name << "'s HP: " << p.HP << "\n"  << m.name << "'s HP: " << m.HP << "\n";
+                cout << p.get_name() << "'s HP: " << *p.HP << "\n"  << m.get_name() << "'s HP: " << *m.HP << "\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
                 if(check_if_dead(m.HP))
                     {
-                        cout << "You have defeated " << m.name << "!\n";
+                        cout << "You have defeated " << m.get_name() << "!\n";
                         break;
                     }
 
                 hit = move_power(m.Atk, p.Def, p.Int, 5);
-                p.HP = p.HP - hit;
-                cout << m.name << " did " << hit << " damage to you!\n";
+                *p.HP = *p.HP - hit;
+                cout << m.get_name() << " did " << hit << " damage to you!\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-                cout << p.name << "'s HP: " << p.HP << "\n"  << m.name << "'s HP: " << m.HP << "\n";
+                cout << p.get_name() << "'s HP: " << *p.HP << "\n"  << m.get_name() << "'s HP: " << *m.HP << "\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
                 if(check_if_dead(p.HP))
                     {
-                        cout << p.name << " NOOOOOOOO!\n" <<  m.name << " has defeated you!\n";
+                        cout << p.get_name() << " NOOOOOOOO!\n" <<  m.get_name() << " has defeated you!\n";
                         break;
                     }
             }
             else
             {
                 hit = move_power(m.Atk, p.Def, m.Int, 5);
-                p.HP = p.HP - hit;
-                cout << m.name << " did " << hit << " damage to you!\n";
+                *p.HP = *p.HP - hit;
+                cout << m.get_name() << " did " << hit << " damage to you!\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-                cout << p.name << "'s HP: " << p.HP << "\n"  << m.name << "'s HP: " << m.HP << "\n";
+                cout << p.get_name() << "'s HP: " << *p.HP << "\n"  << m.get_name() << "'s HP: " << *m.HP << "\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
                  if(check_if_dead(p.HP))
                     {
-                        cout << p.name << " NOOOOOOOO!\n" <<  m.name << " has defeated you!\n";
+                        cout << p.get_name() << " NOOOOOOOO!\n" <<  m.get_name() << " has defeated you!\n";
                         break;
                     }
                 hit = move_power(p.Atk, m.Def, p.Int, 5);
-                m.HP = m.HP - hit;
+                *m.HP = *m.HP - hit;
                 cout << "You did " << hit << " damage!\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-                cout << p.name << "'s HP: " << p.HP << "\n"  << m.name << "'s HP: " << m.HP << "\n";
+                cout << p.get_name() << "'s HP: " << *p.HP << "\n"  << m.get_name() << "'s HP: " << *m.HP << "\n";
 
                 if(check_if_dead(m.HP))
                     {
-                        cout << "You have defeated " << m.name << "!\n";
+                        cout << "You have defeated " << m.get_name() << "!\n";
                         break;
                     }
             }
@@ -177,22 +181,22 @@ int main()
         if (move_num == 0)      //block the attack. the monster is guaranteed to hit you
         {                       //but does a decreased amount of damage
             hit = move_power(m.Atk, p.Def, m.Int, 5, 2, "Def");
-            p.HP = p.HP - hit;
-            cout << m.name << " did " << hit << " damage to you!\n";
+            *p.HP = *p.HP - hit;
+            cout << m.get_name() << " did " << hit << " damage to you!\n";
             cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-            cout << p.name << "'s HP: " << p.HP << "\n"  << m.name << "'s HP: " << m.HP << "\n";
+            cout << p.get_name() << "'s HP: " << *p.HP << "\n"  << m.get_name() << "'s HP: " << *m.HP << "\n";
             cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
             if(check_if_dead(p.HP))
             {
-                cout << p.name << " NOOOOOOOO!\n" <<  m.name << " has defeated you!\n";
+                cout << p.get_name() << " NOOOOOOOO!\n" <<  m.get_name() << " has defeated you!\n";
                 break;
             }
         }                       //doesn't make sense strategically, but adding status effects or
                                 //other battle tactics will make it feasible
-    } while(p.HP > 0 && m.HP > 0); //redundancy; there are already breaks when either player dies
+    } while(*p.HP > 0 && *m.HP > 0); //redundancy; there are already breaks when either player dies
 
-p.exp_gain(p.exp, m.exp_given(), player_win(m.HP), p.name);
+p.exp_gain(p.exp, m.exp_given(), player_win(m.HP), p.get_name());
 
 }
 

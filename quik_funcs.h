@@ -8,12 +8,8 @@
 #include "fighters.h"
 
  //randomize function for stats
-int stat_rand(int init_val, int range) //init_val = beginning range
-{                                             //range = max range
-    int stat = rand()%range+init_val;
-    return stat;
-}
 
+int stat_rand(int,int);
 int input_errorchk (int);
 bool check_if_dead (int*);
 bool player_win(int*);
