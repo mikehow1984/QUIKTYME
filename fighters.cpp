@@ -76,6 +76,7 @@ void Enemy::set_name(string n)
 Enemy::Enemy()
 {
     set_name("DUCKY");
+    Level = 5;
     base_stats.push_back(70);
     base_stats.push_back(60);
     base_stats.push_back(45);
@@ -116,9 +117,10 @@ Enemy::~Enemy()
 
 void Fighter::exp_gain(int p_exp, int exp_given, bool win, string p_name) //exp system. still need to add leveling
 {
-        if (win)
+    if (win)
     {
         p_exp = p_exp + exp_given;
+        refresh_stats();
         cout << p_name << " gained " << exp_given << " experience!" << endl;
     }
 }
@@ -128,7 +130,4 @@ string Fighter::get_name()
     return name;
 }
 
-string Enemy::get_name()
-{
-    return name;
-}
+

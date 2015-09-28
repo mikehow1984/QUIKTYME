@@ -41,18 +41,19 @@ protected:
 
 };
 
-class Enemy: protected Fighter
+class Enemy: public Fighter
 {
 public:
     Enemy();
     ~Enemy();
-    int* HP;
+/*    int* HP;
     int* Atk;
     int* Def;
     int* Int;
     int* Spd;
+    int Level; */
     void set_name(std::string);
-    std::string get_name();
+    //std::string get_name();
     int exp_given()
     {
         return *Atk+*Def+*Int+*Spd;
