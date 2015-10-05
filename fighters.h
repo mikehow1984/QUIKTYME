@@ -1,6 +1,9 @@
 #ifndef FIGHTERS_H_INCLUDED
 #define FIGHTERS_H_INCLUDED
 
+#include <iostream>
+#include <stdlib.h>
+#include <string>
 #include <vector>
 #include "quik_funcs.h"
 

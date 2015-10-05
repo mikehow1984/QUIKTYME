@@ -35,7 +35,7 @@ void enemy_announce (string enemy_name)
 
 void battle (Fighter hero, Enemy villain)
 {
-        do{     //battle systevillain. needs to be split into functions
+        do{     //battle system. needs to be split into functions
         cout << "Type 2 to dodge, Type 1 to kick her in the face, Type 0 to block: ";
             //simple for now. need to add movesets and more options
         int move_num;
@@ -66,7 +66,7 @@ void battle (Fighter hero, Enemy villain)
             }
             else        //here's the risk of dodging: if it hits, not only do you lose a turn
             {           //but the monster does bonus damage to you!
-                hit = move_power(villain.Atk, hero.Def, villain.Int, 5, .5, "Def");
+                hit = move_power(villain.Atk, hero.Def, villain.Int, hero.Int, 5, .5, "Def");
                 *hero.HP = *hero.HP - hit;
                 cout << villain.get_name() << " is too fast!\n";
                 cout << villain.get_name() << " did " << hit << " damage to you!\n";
@@ -85,7 +85,7 @@ void battle (Fighter hero, Enemy villain)
         {
             if (*hero.Spd > *villain.Spd)  //checks who is faster. monster has the advantage if they're equal
             {
-                hit = move_power(hero.Atk, villain.Def, hero.Int, 5);
+                hit = move_power(hero.Atk, villain.Def, hero.Int, villain.Int, 5);
                 *villain.HP = *villain.HP - hit;
                 cout << "You did " << hit << " damage!\n";
                 cout << hero.get_name() << "'s HP: " << *hero.HP << "\n"  << villain.get_name() << "'s HP: " << *villain.HP << "\n";
@@ -97,7 +97,7 @@ void battle (Fighter hero, Enemy villain)
                         break;
                     }
 
-                hit = move_power(villain.Atk, hero.Def, hero.Int, 5);
+                hit = move_power(villain.Atk, hero.Def, hero.Int, villain.Int, 5);
                 *hero.HP = *hero.HP - hit;
                 cout << villain.get_name() << " did " << hit << " damage to you!\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
@@ -112,7 +112,7 @@ void battle (Fighter hero, Enemy villain)
             }
             else
             {
-                hit = move_power(villain.Atk, hero.Def, villain.Int, 5);
+                hit = move_power(villain.Atk, hero.Def, villain.Int, hero.Int, 5);
                 *hero.HP = *hero.HP - hit;
                 cout << villain.get_name() << " did " << hit << " damage to you!\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
@@ -124,7 +124,7 @@ void battle (Fighter hero, Enemy villain)
                         cout << hero.get_name() << " NOOOOOOOO!\n" <<  villain.get_name() << " has defeated you!\n";
                         break;
                     }
-                hit = move_power(hero.Atk, villain.Def, hero.Int, 5);
+                hit = move_power(hero.Atk, villain.Def, hero.Int, villain.Int, 5);
                 *villain.HP = *villain.HP - hit;
                 cout << "You did " << hit << " damage!\n";
                 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
@@ -140,7 +140,7 @@ void battle (Fighter hero, Enemy villain)
         }
         if (move_num == 0)      //block the attack. the monster is guaranteed to hit you
         {                       //but does a decreased amount of damage
-            hit = move_power(villain.Atk, hero.Def, villain.Int, 5, 2, "Def");
+            hit = move_power(villain.Atk, hero.Def, villain.Int, hero.Int, 5, 2, "Def");
             *hero.HP = *hero.HP - hit;
             cout << villain.get_name() << " did " << hit << " damage to you!\n";
             cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";

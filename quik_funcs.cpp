@@ -1,10 +1,6 @@
-#include <iostream>
-#include <string>
-#include <stdlib.h>
-#include <cstdio>
-#include <ctime>
+
 #include "quik_funcs.h"
-#include "fighters.h"
+
 
 using std::cin;
 using std::cout;
@@ -42,11 +38,11 @@ bool player_win(int* enemy_HP)
     return *enemy_HP <= 0;
 }
 
-int move_power(int* a, int* d, int* i, int h)
+int move_power(int* a, int* d, int* i_attacker, int* i_defender, int h)
 {
     int crit = 1;
     int crit_roll = rand()%1000+1;
-    int crit_chance = ((*i)*(200))/10;
+    int crit_chance = (((*i_attacker)/(*i_defender))*(200))/10;
 
     if (crit_chance > crit_roll)
     {
@@ -61,7 +57,7 @@ int move_power(int* a, int* d, int* i, int h)
     return power;
 }
 
-int move_power(int* a, int* d, int* i, int h, const double multiplier, string s) //h is the move's base power
+int move_power(int* a, int* d, int* i_attacker, int* i_defender, int h, const double multiplier, string s) //h is the move's base power
 {
     if (s == "Atk")
     {
@@ -73,17 +69,17 @@ int move_power(int* a, int* d, int* i, int h, const double multiplier, string s)
     }
     else if (s == "Int")
     {
-        *i= (*i)*multiplier;
+        *i_attacker = (*i_attacker)*multiplier;
     }
     else
     {
         cerr << "Multiplier error" << endl;
     }
-    int power = move_power(a, d, i, h);
+    int power = move_power(a, d, i_attacker, i_defender, h);
 
     return power;
 }
-int move_power(int* a, int* d, int* i, int h, const double multiplier1, string s1, const double multiplier2, string s2)
+int move_power(int* a, int* d, int* i_attacker, int* i_defender, int h, const double multiplier1, string s1, const double multiplier2, string s2)
 {
     if (s1 == "Atk")
     {
@@ -103,14 +99,14 @@ int move_power(int* a, int* d, int* i, int h, const double multiplier1, string s
     }
     if (s1 == "Int")
     {
-        *i = (*i)*multiplier1;
+        *i_attacker = (*i_attacker)*multiplier1;
     }
     else if (s2 == "Int")
     {
-        *i = (*i)*multiplier2;
+        *i_attacker = (*i_attacker)*multiplier2;
     }
 
-    int power = move_power(a, d, i, h);
+    int power = move_power(a, d, i_attacker, i_defender, h);
 
     return power;
 }

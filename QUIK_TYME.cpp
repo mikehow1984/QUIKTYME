@@ -75,5 +75,9 @@ int main()
 
     enemy_announce(m.get_name());
     battle(p,m);
+	string pause;
+	cout << "Enter any key to continue...";
+	cin >> pause;
+	return 0;
 }
 

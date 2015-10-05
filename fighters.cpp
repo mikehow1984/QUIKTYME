@@ -1,10 +1,6 @@
-#include <iostream>
-#include <string>
-#include <stdlib.h>
+
+
 #include <cstdio>
-#include <ctime>
-#include <vector>
-#include "quik_funcs.h"
 #include "fighters.h"
 
 using std::cin;
@@ -112,7 +108,7 @@ Enemy::Enemy()
 
 Enemy::~Enemy()
 {
-    cout << get_name() << "was a worthy opponent. " << endl;
+    cout << get_name() << " was a worthy opponent. " << endl;
 }
 
 void Fighter::exp_gain(int p_exp, int exp_given, bool win, string p_name) //exp system. still need to add leveling
