@@ -31,6 +31,8 @@ public:
     int* Spd;
     long exp;
     long exp_gain(long, long, bool, std::string);
+	int get_level();
+	bool max_level();
 	void level_up();
     void refresh_stats();
     void change_name();
@@ -39,7 +41,6 @@ public:
 protected:
 	int Level;
     std::string name;
-    
     std::vector<int> genetics;
     std::vector<int> stat_boost;
     std::vector<int> stats;

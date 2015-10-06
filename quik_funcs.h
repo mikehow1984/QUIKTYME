@@ -14,6 +14,7 @@ int stat_rand(int,int);
 int input_errorchk (int);
 bool check_if_dead (int*);
 bool player_win(int*);
+bool max_level(int);
 int move_power(int*, int*, int*, int*, int);
 int move_power(int*, int*, int*, int*, int, const double, std::string); //for one stat multiplier
 int move_power(int*, int*, int*, int*, int, const double, std::string, const double, std::string);

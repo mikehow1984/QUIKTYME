@@ -59,13 +59,22 @@ Fighter::Fighter()
 
 Fighter::~Fighter() {}
 
-void Fighter::refresh_stats ()
+void Fighter::refresh_stats()
 {
-    stats[0] = stat_formula_HP(base_stats[0], genetics[0], stat_boost[0], Level);
-    for (int i = 1; i < 5; i++)
+    for (int i = 0; i < 5; i++)
     {
         stats[i] = stat_formula(base_stats[i], genetics[i], stat_boost[i], Level);
     }
+}
+
+int Fighter::get_level()
+{
+	return Level;
+}
+
+bool Fighter::max_level()
+{
+	return get_level() >= 100;
 }
 
 void Enemy::set_name(string n)
@@ -86,9 +95,7 @@ Enemy::Enemy()
     //base_stat[0] = HP, [1] = Atk, [2] = Def, [3] = Int, [4] = Spd;
 
 	genetics.erase(genetics.begin(), genetics.end());
-    genetics.push_back(stat_rand(1,30));
-
-    for (int i = 1; i < 5; i++)
+    for (int i = 0; i < 5; i++)
     {
         genetics.push_back(stat_rand(1,30));
     }
@@ -100,9 +107,7 @@ Enemy::Enemy()
     }
 
 	stats.erase(stats.begin(), stats.end());
-    stats.push_back(stat_formula_HP(base_stats[0], genetics[0], stat_boost[0], Level));
-
-    for (int i = 1; i < 5; i++)
+    for (int i = 0; i < 5; i++)
     {
         stats.push_back(stat_formula(base_stats[i], genetics[i], stat_boost[i], Level));
     }

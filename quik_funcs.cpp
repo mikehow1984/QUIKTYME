@@ -38,6 +38,7 @@ bool player_win(int* enemy_HP)
     return *enemy_HP <= 0;
 }
 
+
 int move_power(int* a, int* d, int* i_attacker, int* i_defender, int h)
 {
     int crit = 1;

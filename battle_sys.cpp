@@ -156,6 +156,10 @@ void battle (Fighter& hero, Enemy& villain)
                                 //other battle tactics will make it feasible
     } while(*hero.HP > 0 && *villain.HP > 0); //redundancy; there are already breaks when either player dies
 
-	hero.exp = hero.exp_gain(hero.exp, villain.exp_given(), player_win(villain.HP), hero.get_name());
-	hero.level_up();
+	if (!hero.max_level())
+	{
+		hero.exp = hero.exp_gain(hero.exp, villain.exp_given(), player_win(villain.HP), hero.get_name());
+		hero.level_up();
+	}
 }
+
