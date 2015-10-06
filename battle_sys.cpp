@@ -11,7 +11,7 @@
 using std::string;          using std::cout;
 using std::cin;
 
-bool level_up (int lv, int ex) //"ex" is the player's experience after a battle
+bool next_level (int lv, int ex) //"ex" is the player's experience after a battle
 {
     /**experience formula: exp = ((50*(lv))*((9*(lv)-16)))-100;
      *derived from the Runescape formula (exp needed to raise a level:
@@ -22,7 +22,7 @@ bool level_up (int lv, int ex) //"ex" is the player's experience after a battle
      *to come up with a formula for total experience needed to be at a
      *certain level.
      **/
-    int nextlevel_ex = ((50*(lv))*((9*(lv)-16)))-100;
+    int nextlevel_ex = ((50*(lv))*((9*(lv)-16)))+450;
 
     return ex >= nextlevel_ex;
 }
@@ -33,7 +33,7 @@ void enemy_announce (string enemy_name)
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 }
 
-void battle (Fighter hero, Enemy villain)
+void battle (Fighter& hero, Enemy& villain)
 {
         do{     //battle system. needs to be split into functions
         cout << "Type 2 to dodge, Type 1 to kick her in the face, Type 0 to block: ";
@@ -156,5 +156,6 @@ void battle (Fighter hero, Enemy villain)
                                 //other battle tactics will make it feasible
     } while(*hero.HP > 0 && *villain.HP > 0); //redundancy; there are already breaks when either player dies
 
-hero.exp_gain(hero.exp, villain.exp_given(), player_win(villain.HP), hero.get_name());
+	hero.exp = hero.exp_gain(hero.exp, villain.exp_given(), player_win(villain.HP), hero.get_name());
+	hero.level_up();
 }

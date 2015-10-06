@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include "quik_funcs.h"
+#include "battle_sys.h"
 
 class Fighter
 /*work in progress. Player stats. Thinking of making a system similar to
@@ -28,16 +29,17 @@ public:
     int* Def;
     int* Int;
     int* Spd;
-    double exp;
-    void exp_gain(int, int, bool, std::string);
-    //need leveling function
-    int Level;
+    long exp;
+    long exp_gain(long, long, bool, std::string);
+	void level_up();
     void refresh_stats();
     void change_name();
     std::string get_name();
+	std::vector<int> base_stats;
 protected:
+	int Level;
     std::string name;
-    std::vector<int> base_stats;
+    
     std::vector<int> genetics;
     std::vector<int> stat_boost;
     std::vector<int> stats;
@@ -49,7 +51,7 @@ class Enemy: public Fighter
 public:
     Enemy();
     ~Enemy();
-/*    int* HP;
+    /*int* HP;
     int* Atk;
     int* Def;
     int* Int;
@@ -59,7 +61,7 @@ public:
     //std::string get_name();
     int exp_given()
     {
-        return *Atk+*Def+*Int+*Spd;
+        return (*Atk+*Def+*Int+*Spd)*6;
     }
 
 };

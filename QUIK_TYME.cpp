@@ -63,18 +63,20 @@ int main()
     cout << "Enter your name: ";
     p.change_name();
 
-    cout << "What level are you? ";
-    cin >> p.Level;
-    p.refresh_stats();
     cout << endl << "The HP is " << *p.HP << endl << "The attack is "
             << *p.Atk << endl << "The defense is " << *p.Def << endl
             << "The intelligence is " << *p.Int << endl
             << "The speed is " << *p.Spd << endl;
 
-    Enemy m;              //intitalizing monster info. this will be its own function soon
-
+    Enemy m;              //intitalizing monster info.
     enemy_announce(m.get_name());
+	cout << endl << "The HP is " << *m.HP << endl << "The attack is "
+		<< *m.Atk << endl << "The defense is " << *m.Def << endl
+		<< "The intelligence is " << *m.Int << endl
+		<< "The speed is " << *m.Spd << endl;
+
     battle(p,m);
+
 	string pause;
 	cout << "Enter any key to continue...";
 	cin >> pause;
