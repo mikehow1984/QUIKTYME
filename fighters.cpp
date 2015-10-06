@@ -142,7 +142,7 @@ void Fighter::level_up()
 	{
 		++Level;
 		refresh_stats();
-		cout << name << " reached level " << Level << "!";
+		cout << name << " reached level " << Level << "!" << endl;
 	}
 }
 

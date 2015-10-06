@@ -61,7 +61,7 @@ public:
     //std::string get_name();
     int exp_given()
     {
-        return (*Atk+*Def+*Int+*Spd)*6;
+        return (*Atk+*Def+*Int+*Spd);
     }
 
 };
