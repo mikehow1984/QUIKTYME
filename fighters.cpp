@@ -20,44 +20,45 @@ Fighter::Fighter()
 {
     Level = 1;
     exp = 0;
-
-	base_stats.erase(base_stats.begin(), base_stats.end());
-    base_stats.push_back(150);
-    base_stats.push_back(100);
-    base_stats.push_back(60);
-    base_stats.push_back(70);
-    base_stats.push_back(100);
-    //base_stat[0] = HP, 1 = Atk, 2 = Def, 3 = Int, 4 = Spd;
-	genetics.erase(genetics.begin(), genetics.end());
-    genetics.push_back(stat_rand(1,30));
-
-    for (int i = 1; i < 5; i++)
-    {
-        genetics.push_back(stat_rand(1,30));
-    }
-
-	stat_boost.erase(stat_boost.begin(), stat_boost.end());
-    for (int i = 0; i < 5; i++)
-    {
-        stat_boost.push_back(0);
-    }
-
-	stats.erase(stats.begin(), stats.end());
-    stats.push_back(stat_formula_HP(base_stats[0], genetics[0], stat_boost[0], Level));
-
-    for (int i = 1; i < 5; i++)
-    {
-        stats.push_back(stat_formula(base_stats[i], genetics[i], stat_boost[i], Level));
-    }
-
-    HP = &stats[0];
-    Atk = &stats[1];
-    Def = &stats[2];
-    Int = &stats[3];
-    Spd = &stats[4];
+	init_stats();
 }
 
 Fighter::~Fighter() {}
+
+void Fighter::init_stats()
+{
+	base_stats.erase(base_stats.begin(), base_stats.end());
+	base_stats.push_back(150);
+	base_stats.push_back(100);
+	base_stats.push_back(60);
+	base_stats.push_back(70);
+	base_stats.push_back(100);
+	//base_stat[0] = HP, [1] = Atk, [2] = Def, [3] = Int, [4] = Spd;
+
+	genetics.erase(genetics.begin(), genetics.end());
+	for (int i = 0; i < 5; i++)
+	{
+		genetics.push_back(stat_rand(1, 30));
+	}
+
+	stat_boost.erase(stat_boost.begin(), stat_boost.end());
+	for (int i = 0; i < 5; i++)
+	{
+		stat_boost.push_back(0);
+	}
+
+	stats.erase(stats.begin(), stats.end());
+	for (int i = 0; i < 5; i++)
+	{
+		stats.push_back(stat_formula(base_stats[i], genetics[i], stat_boost[i], Level));
+	}
+
+	HP = &stats[0];
+	Atk = &stats[1];
+	Def = &stats[2];
+	Int = &stats[3];
+	Spd = &stats[4];
+}
 
 void Fighter::refresh_stats()
 {
@@ -86,7 +87,8 @@ Enemy::Enemy()
 {
     set_name("DUCKY");
     Level = 1;
-	base_stats.erase(base_stats.begin(), base_stats.end());
+	init_stats();
+	/*base_stats.erase(base_stats.begin(), base_stats.end());
     base_stats.push_back(70);
     base_stats.push_back(60);
     base_stats.push_back(45);
@@ -116,7 +118,7 @@ Enemy::Enemy()
     Atk = &stats[1];
     Def = &stats[2];
     Int = &stats[3];
-    Spd = &stats[4];
+    Spd = &stats[4];*/
 
 }
 

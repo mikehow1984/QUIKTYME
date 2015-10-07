@@ -34,6 +34,7 @@ public:
 	int get_level();
 	bool max_level();
 	void level_up();
+	void init_stats();
     void refresh_stats();
     void change_name();
     std::string get_name();
