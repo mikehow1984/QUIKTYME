@@ -7,8 +7,24 @@
 #include <vector>
 #include "quik_funcs.h"
 #include "battle_sys.h"
-
 class Fighter
+{
+protected:
+	int Level;
+	std::string name;
+	std::vector<int> base_stats;
+	std::vector<int> genetics;
+	std::vector<int> stat_boost;
+	std::vector<int> stats;
+	long exp;
+
+	int* HP;
+	int* Atk;
+	int* Def;
+	int* Int;
+	int* Spd;
+};
+class Hero : public Fighter
 /*work in progress. Player stats. Thinking of making a system similar to
 * Pokemon, where you have 'base stats' that are common for that type of fighter,
 * 'individual values' that are static stats that are unchangeable when the
@@ -22,14 +38,10 @@ class Fighter
 */
 {
 public:
-    Fighter();
-    ~Fighter();
-    int* HP;
-    int* Atk;
-    int* Def;
-    int* Int;
-    int* Spd;
-    long exp;
+    Fighter.Hero();
+    ~Fighter.Hero();
+
+    
     long exp_gain(long, long, bool, std::string);
 	int get_level();
 	bool max_level();
@@ -38,21 +50,17 @@ public:
     void refresh_stats();
     void change_name();
     std::string get_name();
-	std::vector<int> base_stats;
+	
 protected:
-	int Level;
-    std::string name;
-    std::vector<int> genetics;
-    std::vector<int> stat_boost;
-    std::vector<int> stats;
+
 
 };
 
 class Enemy: public Fighter
 {
 public:
-    Enemy();
-    ~Enemy();
+    Fighter.Enemy();
+    ~Fighter.Enemy();
     /*int* HP;
     int* Atk;
     int* Def;
