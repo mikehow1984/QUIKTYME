@@ -1,10 +1,31 @@
 #ifndef FIGHTERS_H_INCLUDED
 #define FIGHTERS_H_INCLUDED
 
+#include <iostream>
+#include <stdlib.h>
+#include <string>
 #include <vector>
 #include "quik_funcs.h"
-
+#include "battle_sys.h"
 class Fighter
+{
+protected:
+	int Level;
+	std::string name;
+	std::vector<int> genetics;
+	std::vector<int> stat_boost;
+	std::vector<int> stats;
+	std::vector<int> base_stats;
+
+	int* HP;
+	int* Atk;
+	int* Def;
+	int* Int;
+	int* Spd;
+	long exp;
+};
+
+class Hero: public Fighter
 /*work in progress. Player stats. Thinking of making a system similar to
 * Pokemon, where you have 'base stats' that are common for that type of fighter,
 * 'individual values' that are static stats that are unchangeable when the
@@ -18,41 +39,39 @@ class Fighter
 */
 {
 public:
-    Fighter();
-    ~Fighter();
-    int* HP;
-    int* Atk;
-    int* Def;
-    int* Int;
-    int* Spd;
-    std::string name;
-    double exp;
-    void exp_gain(int, int, bool, std::string);
-    //need leveling function
-    int Level;
+    Hero();
+    ~Hero();
 
-private:
-    std::vector<int> base_stats;
-    std::vector<int> genetics;
-    std::vector<int> stat_boost;
-    std::vector<int> stats;
+    
+    long exp_gain(long, long, bool);
+	int get_level();
+	bool max_level();
+	void level_up();
+	void init_stats();
+    void refresh_stats();
+    void change_name();
+    std::string get_name();
+	
+
 
 };
 
-class Enemy
+class Enemy: public Fighter
 {
 public:
     Enemy();
     ~Enemy();
-    std::string name;
-    int HP;
-    int Atk;
-    int Def;
-    int Int;
-    int Spd;
-    double exp_given(void)
+    /*int* HP;
+    int* Atk;
+    int* Def;
+    int* Int;
+    int* Spd;
+    int Level; */
+    void set_name(std::string);
+    //std::string get_name();
+    int exp_given()
     {
-        return Atk+Def+Int+Spd;
+        return (*Atk+*Def+*Int+*Spd);
     }
 
 };
