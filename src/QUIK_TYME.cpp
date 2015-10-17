@@ -48,7 +48,7 @@ int main()
 {
 
     //name algorithm here
-    Fighter p; //initializing player's info
+    Hero p; //initializing player's info
 
     /*
         cout << "Enter your birthday: " << '\n';
@@ -61,19 +61,21 @@ int main()
         //maybe make the fighting depend on what key you type
     */
     cout << "Enter your name: ";
-    p.change_name();
+	string hero_name;
+	cin >> hero_name;
+    p.set_name(hero_name);
 
-    cout << endl << "The HP is " << *p.HP << endl << "The attack is "
+   /* cout << endl << "The HP is " << *p.HP << endl << "The attack is "
             << *p.Atk << endl << "The defense is " << *p.Def << endl
             << "The intelligence is " << *p.Int << endl
-            << "The speed is " << *p.Spd << endl;
+            << "The speed is " << *p.Spd << endl;*/
 
     Enemy m;              //intitalizing monster info.
     enemy_announce(m.get_name());
-	cout << endl << "The HP is " << *m.HP << endl << "The attack is "
+	/*cout << endl << "The HP is " << *m.HP << endl << "The attack is "
 		<< *m.Atk << endl << "The defense is " << *m.Def << endl
 		<< "The intelligence is " << *m.Int << endl
-		<< "The speed is " << *m.Spd << endl;
+		<< "The speed is " << *m.Spd << endl;*/
 
     battle(p,m);
 

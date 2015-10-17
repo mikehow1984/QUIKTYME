@@ -7,8 +7,8 @@
 #include <stdlib.h>
 #include <string>
 
-bool next_level (int, int);
+
 void enemy_announce (std::string);
-void battle (class Fighter&, class Enemy&);
+
 
 #endif // BATTLE_SYS_H_INCLUDED

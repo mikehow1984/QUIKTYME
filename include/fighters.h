@@ -9,7 +9,14 @@
 #include "battle_sys.h"
 class Fighter
 {
+public:
+	friend void battle(class Hero&, class Enemy&);
+	std::string get_name();
+	void init_stats();
+	void set_name(std::string);
+
 protected:
+	void refresh_stats();
 	int Level;
 	std::string name;
 	std::vector<int> genetics;
@@ -42,18 +49,12 @@ public:
     Hero();
     ~Hero();
 
-    
-    long exp_gain(long, long, bool);
+	bool next_level(int&, long&);
+	
+    long exp_gain(long&, long, bool, std::string);
 	int get_level();
 	bool max_level();
 	void level_up();
-	void init_stats();
-    void refresh_stats();
-    void change_name();
-    std::string get_name();
-	
-
-
 };
 
 class Enemy: public Fighter
@@ -61,15 +62,8 @@ class Enemy: public Fighter
 public:
     Enemy();
     ~Enemy();
-    /*int* HP;
-    int* Atk;
-    int* Def;
-    int* Int;
-    int* Spd;
-    int Level; */
-    void set_name(std::string);
-    //std::string get_name();
-    int exp_given()
+    
+    long exp_given()
     {
         return (*Atk+*Def+*Int+*Spd);
     }
