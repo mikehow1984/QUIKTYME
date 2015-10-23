@@ -1,5 +1,3 @@
-
-
 #include <cstdio>
 #include "fighters.h"
 
@@ -16,6 +14,7 @@ Hero::Hero()
     Level = 1;
     exp = 0;
 	init_stats();
+	name = "";
 }
 
 Hero::~Hero() {}
@@ -65,7 +64,7 @@ void Fighter::refresh_stats()
 
 void Fighter::set_name(string n)
 {
-	this->name = n;
+	name = n;
 }
 
 bool Hero::next_level(int &Level, long &exp) //"ex" is the player's experience after a battle
@@ -237,8 +236,8 @@ void battle(Hero &hero, Enemy &villain)
 					break;
 				}
 			}
-
 		}
+
 		if (move_num == 0)      //block the attack. the monster is guaranteed to hit you
 		{                       //but does a decreased amount of damage
 			hit = move_power(villain.Atk, hero.Def, villain.Int, hero.Int, 5, 2, "Def");

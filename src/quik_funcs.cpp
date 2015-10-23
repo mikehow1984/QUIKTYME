@@ -1,7 +1,6 @@
 
 #include "quik_funcs.h"
 
-
 using std::cin;
 using std::cout;
 using std::endl;
@@ -80,6 +79,7 @@ int move_power(int* a, int* d, int* i_attacker, int* i_defender, int h, const do
 
     return power;
 }
+
 int move_power(int* a, int* d, int* i_attacker, int* i_defender, int h, const double multiplier1, string s1, const double multiplier2, string s2)
 {
     if (s1 == "Atk")
@@ -116,6 +116,7 @@ int stat_formula_HP(int& baseHP, int& geneticHP, int& boostHP, int& level)
 {
     return (((((2*baseHP)+geneticHP+(boostHP/4)*level)/100))+level+10);
 }
+
 int stat_formula (int& base, int& genetic, int& stat_boost, int& level)
 {
     return ((((((2*base)+genetic+(stat_boost/4))*level)/100))+5);

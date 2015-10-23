@@ -10,10 +10,10 @@
 class Fighter
 {
 public:
-	friend void battle(class Hero&, class Enemy&);
 	std::string get_name();
 	void init_stats();
 	void set_name(std::string);
+	friend void battle(class Hero&, class Enemy&);
 
 protected:
 	void refresh_stats();
@@ -50,7 +50,6 @@ public:
     ~Hero();
 
 	bool next_level(int&, long&);
-	
     long exp_gain(long&, long, bool, std::string);
 	int get_level();
 	bool max_level();
@@ -62,7 +61,6 @@ class Enemy: public Fighter
 public:
     Enemy();
     ~Enemy();
-    
     long exp_given()
     {
         return (*Atk+*Def+*Int+*Spd);
