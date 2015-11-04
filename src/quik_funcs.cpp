@@ -1,9 +1,5 @@
 
 #include "quik_funcs.h"
-<<<<<<< HEAD:quik_funcs.cpp
-
-=======
->>>>>>> rework:src/quik_funcs.cpp
 
 using std::cin;
 using std::cout;
@@ -83,10 +79,7 @@ int move_power(int* a, int* d, int* i_attacker, int* i_defender, int h, const do
 
     return power;
 }
-<<<<<<< HEAD:quik_funcs.cpp
-=======
 
->>>>>>> rework:src/quik_funcs.cpp
 int move_power(int* a, int* d, int* i_attacker, int* i_defender, int h, const double multiplier1, string s1, const double multiplier2, string s2)
 {
     if (s1 == "Atk")

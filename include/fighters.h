@@ -9,16 +9,6 @@
 #include "battle_sys.h"
 class Fighter
 {
-<<<<<<< HEAD:fighters.h
-protected:
-	int Level;
-	std::string name;
-	std::vector<int> base_stats;
-	std::vector<int> genetics;
-	std::vector<int> stat_boost;
-	std::vector<int> stats;
-	long exp;
-=======
 public:
 	std::string get_name();
 	void init_stats();
@@ -33,22 +23,16 @@ protected:
 	std::vector<int> stat_boost;
 	std::vector<int> stats;
 	std::vector<int> base_stats;
->>>>>>> rework:include/fighters.h
 
 	int* HP;
 	int* Atk;
 	int* Def;
 	int* Int;
 	int* Spd;
-<<<<<<< HEAD:fighters.h
-};
-class Hero : public Fighter
-=======
 	long exp;
 };
 
 class Hero: public Fighter
->>>>>>> rework:include/fighters.h
 /*work in progress. Player stats. Thinking of making a system similar to
 * Pokemon, where you have 'base stats' that are common for that type of fighter,
 * 'individual values' that are static stats that are unchangeable when the
@@ -62,26 +46,8 @@ class Hero: public Fighter
 */
 {
 public:
-<<<<<<< HEAD:fighters.h
-    Fighter.Hero();
-    ~Fighter.Hero();
-
-    
-    long exp_gain(long, long, bool, std::string);
-	int get_level();
-	bool max_level();
-	void level_up();
-	void init_stats();
-    void refresh_stats();
-    void change_name();
-    std::string get_name();
-	
-protected:
-
-=======
     Hero();
     ~Hero();
->>>>>>> rework:include/fighters.h
 
 	bool next_level(int&, long&);
     long exp_gain(long&, long, bool, std::string);
@@ -93,23 +59,9 @@ protected:
 class Enemy: public Fighter
 {
 public:
-<<<<<<< HEAD:fighters.h
-    Fighter.Enemy();
-    ~Fighter.Enemy();
-    /*int* HP;
-    int* Atk;
-    int* Def;
-    int* Int;
-    int* Spd;
-    int Level; */
-    void set_name(std::string);
-    //std::string get_name();
-    int exp_given()
-=======
     Enemy();
     ~Enemy();
     long exp_given()
->>>>>>> rework:include/fighters.h
     {
         return (*Atk+*Def+*Int+*Spd);
     }
