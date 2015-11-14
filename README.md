@@ -19,5 +19,6 @@ RPG I'm learning from and developing with C++
  * stats outside of battle (such as personal wealth levels, or if they're single)
  * which effects their availability or how much they can contribute to the team.
  *
- * But as of 8/31/2015, it's just a simple 1v1 text demo.
+ * But as of 11/14/2015, it's just a simple 1v1 text demo.
+ * Also building a mySQL database for multiple characters using Django
  **/
